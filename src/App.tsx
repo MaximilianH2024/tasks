@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Col, Container, Row } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import "./App.css";
 
 function App(): JSX.Element {
@@ -10,7 +10,12 @@ function App(): JSX.Element {
                 UM COS420 with React Hooks and TypeScript
             </header>
             <header>
-                <Button className="Button">Log Hello World</Button>
+                <Button
+                    className="Button"
+                    onClick={() => console.log("Hello World!")}
+                >
+                    Log Hello World
+                </Button>
             </header>
             <p>
                 Edit <code>src/App.tsx</code> and save. This page will
