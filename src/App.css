@@ -19,6 +19,14 @@
     }
 }
 
+.ListTextProperties {
+
+    font-size: large;
+    color:rgb(40, 40, 216);
+    font-weight: 500;
+
+}
+
 .App-header {
     width: 100%;
     background-color: #0d1e3f;
