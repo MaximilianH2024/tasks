@@ -12,6 +12,11 @@ function App(): JSX.Element {
                 Edit <code>src/App.tsx</code> and save. This page will
                 automatically reload (Maximilian).
             </p>
+            <img
+                className="DeerPhoto"
+                src="https://image.shutterstock.com/image-photo/silhouette-large-bull-elk-stag-260nw-325904582.jpg"
+                alt="Deer"
+            />
         </div>
     );
 }
