@@ -6,56 +6,30 @@ Browserslist: caniuse-lite is outdated. Please run:
   npx browserslist@latest --update-db
   Why you should do it regularly: https://github.com/browserslist/browserslist#browsers-data-updating
 FAIL src/HtmlCss.test.tsx
-  ● Some Bootstrap Elements are added › There is one bootstrap button with the text 'Log Hello World'
+  ● Some basic CSS is added. › The background color of the header area is different
 
-    TestingLibraryElementError: Unable to find an accessible element with the role "button" and name `/Log Hello World/i`
+    TestingLibraryElementError: Found multiple elements with the role "banner"
 
-    Here are the accessible roles:
+    Here are the matching elements:
 
-      heading:
+    Ignored nodes: comments, <script />, <style />
+    [36m<header[39m
+      [33mclass[39m=[32m"App-header"[39m
+    [36m>[39m
+      [0mUM COS420 with React Hooks and TypeScript[0m
+    [36m</header>[39m
 
-      Name "Mock React Website Deployment Header":
-      [36m<h1 />[39m
+    Ignored nodes: comments, <script />, <style />
+    [36m<header>[39m
+      [36m<button[39m
+        [33mclass[39m=[32m"Button btn btn-primary"[39m
+        [33mtype[39m=[32m"button"[39m
+      [36m>[39m
+        [0mLog Hello World[0m
+      [36m</button>[39m
+    [36m</header>[39m
 
-      --------------------------------------------------
-      banner:
-
-      Name "":
-      [36m<header[39m
-        [33mclass[39m=[32m"App-header"[39m
-      [36m/>[39m
-
-      --------------------------------------------------
-      img:
-
-      Name "Deer":
-      [36m<img[39m
-        [33malt[39m=[32m"Deer"[39m
-        [33mclass[39m=[32m"DeerPhoto"[39m
-        [33msrc[39m=[32m"https://image.shutterstock.com/image-photo/silhouette-large-bull-elk-stag-260nw-325904582.jpg"[39m
-      [36m/>[39m
-
-      --------------------------------------------------
-      list:
-
-      Name "":
-      [36m<ol[39m
-        [33mclass[39m=[32m"ListTextProperties"[39m
-      [36m/>[39m
-
-      --------------------------------------------------
-      listitem:
-
-      Name "":
-      [36m<li />[39m
-
-      Name "":
-      [36m<li />[39m
-
-      Name "":
-      [36m<li />[39m
-
-      --------------------------------------------------
+    (If this is intentional, then use the `*AllBy*` variant of the query (like `queryAllByText`, `getAllByText`, or `findAllByText`)).
 
     Ignored nodes: comments, <script />, <style />
     [36m<body>[39m
@@ -70,6 +44,14 @@ FAIL src/HtmlCss.test.tsx
             [33mclass[39m=[32m"App-header"[39m
           [36m>[39m
             [0mUM COS420 with React Hooks and TypeScript[0m
+          [36m</header>[39m
+          [36m<header>[39m
+            [36m<button[39m
+              [33mclass[39m=[32m"Button btn btn-primary"[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [0mLog Hello World[0m
+            [36m</button>[39m
           [36m</header>[39m
           [36m<p>[39m
             [0mEdit [0m
@@ -100,127 +82,20 @@ FAIL src/HtmlCss.test.tsx
       [36m</div>[39m
     [36m</body>[39m
 
-      39 |     test("There is one bootstrap button with the text 'Log Hello World'", () => {
-      40 |         render(<App />);
-    > 41 |         const button = screen.getByRole("button", { name: /Log Hello World/i });
+      29 |     test("The background color of the header area is different", () => {
+      30 |         render(<App />);
+    > 31 |         const banner = screen.getByRole("banner");
          |                               ^
-      42 |         expect(button).toBeInTheDocument();
-      43 |         expect(button).toHaveClass("btn");
-      44 |         expect(button).toHaveClass("btn-primary");
+      32 |         expect(banner).not.toHaveStyle({
+      33 |             "background-color": "rgb(40, 44, 52)"
+      34 |         });
 
       at Object.getElementError (node_modules/@testing-library/dom/dist/config.js:38:19)
-      at node_modules/@testing-library/dom/dist/query-helpers.js:90:38
-      at node_modules/@testing-library/dom/dist/query-helpers.js:62:17
+      at getElementError (node_modules/@testing-library/dom/dist/query-helpers.js:25:35)
+      at getMultipleElementsFoundError (node_modules/@testing-library/dom/dist/query-helpers.js:29:10)
+      at node_modules/@testing-library/dom/dist/query-helpers.js:66:13
       at getByRole (node_modules/@testing-library/dom/dist/query-helpers.js:111:19)
-      at Object.<anonymous> (src/HtmlCss.test.tsx:41:31)
-
-  ● Some Bootstrap Elements are added › Clicking the bootstrap button logs 'Hello World!'
-
-    TestingLibraryElementError: Unable to find an accessible element with the role "button" and name `/Log Hello World/i`
-
-    Here are the accessible roles:
-
-      heading:
-
-      Name "Mock React Website Deployment Header":
-      [36m<h1 />[39m
-
-      --------------------------------------------------
-      banner:
-
-      Name "":
-      [36m<header[39m
-        [33mclass[39m=[32m"App-header"[39m
-      [36m/>[39m
-
-      --------------------------------------------------
-      img:
-
-      Name "Deer":
-      [36m<img[39m
-        [33malt[39m=[32m"Deer"[39m
-        [33mclass[39m=[32m"DeerPhoto"[39m
-        [33msrc[39m=[32m"https://image.shutterstock.com/image-photo/silhouette-large-bull-elk-stag-260nw-325904582.jpg"[39m
-      [36m/>[39m
-
-      --------------------------------------------------
-      list:
-
-      Name "":
-      [36m<ol[39m
-        [33mclass[39m=[32m"ListTextProperties"[39m
-      [36m/>[39m
-
-      --------------------------------------------------
-      listitem:
-
-      Name "":
-      [36m<li />[39m
-
-      Name "":
-      [36m<li />[39m
-
-      Name "":
-      [36m<li />[39m
-
-      --------------------------------------------------
-
-    Ignored nodes: comments, <script />, <style />
-    [36m<body>[39m
-      [36m<div>[39m
-        [36m<div[39m
-          [33mclass[39m=[32m"App"[39m
-        [36m>[39m
-          [36m<h1>[39m
-            [0mMock React Website Deployment Header[0m
-          [36m</h1>[39m
-          [36m<header[39m
-            [33mclass[39m=[32m"App-header"[39m
-          [36m>[39m
-            [0mUM COS420 with React Hooks and TypeScript[0m
-          [36m</header>[39m
-          [36m<p>[39m
-            [0mEdit [0m
-            [36m<code>[39m
-              [0msrc/App.tsx[0m
-            [36m</code>[39m
-            [0m and save. This page will automatically reload (Maximilian).[0m
-          [36m</p>[39m
-          [36m<img[39m
-            [33malt[39m=[32m"Deer"[39m
-            [33mclass[39m=[32m"DeerPhoto"[39m
-            [33msrc[39m=[32m"https://image.shutterstock.com/image-photo/silhouette-large-bull-elk-stag-260nw-325904582.jpg"[39m
-          [36m/>[39m
-          [36m<ol[39m
-            [33mclass[39m=[32m"ListTextProperties"[39m
-          [36m>[39m
-            [36m<li>[39m
-              [0mDeer Fact One[0m
-            [36m</li>[39m
-            [36m<li>[39m
-              [0mDeer Fact Two[0m
-            [36m</li>[39m
-            [36m<li>[39m
-              [0mDeer Fact Three[0m
-            [36m</li>[39m
-          [36m</ol>[39m
-        [36m</div>[39m
-      [36m</div>[39m
-    [36m</body>[39m
-
-      54 |         const consoleSpy = jest.spyOn(console, "log");
-      55 |         render(<App />);
-    > 56 |         const button = screen.getByRole("button", { name: /Log Hello World/i });
-         |                               ^
-      57 |         userEvent.click(button);
-      58 |         expect(consoleSpy).toHaveBeenCalledWith("Hello World!");
-      59 |     });
-
-      at Object.getElementError (node_modules/@testing-library/dom/dist/config.js:38:19)
-      at node_modules/@testing-library/dom/dist/query-helpers.js:90:38
-      at node_modules/@testing-library/dom/dist/query-helpers.js:62:17
-      at getByRole (node_modules/@testing-library/dom/dist/query-helpers.js:111:19)
-      at Object.<anonymous> (src/HtmlCss.test.tsx:56:31)
+      at Object.<anonymous> (src/HtmlCss.test.tsx:31:31)
 
 PASS src/App.test.tsx
 ----------|---------|----------|---------|---------|-------------------
@@ -231,7 +106,7 @@ All files |     100 |      100 |     100 |     100 |
 ----------|---------|----------|---------|---------|-------------------
 
 Test Suites: 1 failed, 1 passed, 2 total
-Tests:       2 failed, 6 passed, 8 total
+Tests:       1 failed, 7 passed, 8 total
 Snapshots:   0 total
-Time:        2.014 s
+Time:        2.254 s
 Ran all test suites.
