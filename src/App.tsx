@@ -17,6 +17,11 @@ function App(): JSX.Element {
                 src="https://image.shutterstock.com/image-photo/silhouette-large-bull-elk-stag-260nw-325904582.jpg"
                 alt="Deer"
             />
+            <ol className="ListTextProperties">
+                <li>Deer Fact One</li>
+                <li>Deer Fact Two</li>
+                <li>Deer Fact Three</li>
+            </ol>
         </div>
     );
 }
