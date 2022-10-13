@@ -19,11 +19,26 @@
     }
 }
 
+.Button {
+
+    padding: 1rem;
+    margin: 50px;
+}
+
+.MockHeader {
+
+    background-color: #0d1e3f;
+    color: #ffffff;
+
+}
+
 .ListTextProperties {
 
     font-size: large;
     color:rgb(40, 40, 216);
     font-weight: 500;
+    text-align: left;
+
 
 }
 
@@ -37,6 +52,7 @@
     justify-content: center;
     font-size: calc(10px + 2vmin);
     color: rgb(255, 255, 255);
+    margin-bottom: 1rem;
 }
 
 .App-link {
