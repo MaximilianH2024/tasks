@@ -1,3 +1,5 @@
+import { reduceEachTrailingCommentRange } from "typescript";
+
 /**
  * Consumes a single temperature in Fahrenheit (a number) and converts to Celsius
  * using this formula:
@@ -57,5 +59,16 @@ export function isQuestion(message: string): boolean {
  * upper or lower case), then return `false`. Otherwise, return `null`.
  */
 export function convertYesNo(word: string): boolean | null {
-    return true;
+    const loweredWord = String(word.toLowerCase);
+    const upperedWord = String(word.toUpperCase);
+
+    if (word === "yes" || word === "YES") {
+        return true;
+    }
+
+    if (word === "no" || word === "NO") {
+        return false;
+    } else {
+        return null;
+    }
 }
