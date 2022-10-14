@@ -35,7 +35,7 @@
 .ListTextProperties {
 
     font-size: large;
-    color:rgb(40, 40, 216);
+    color:#7c1111;
     font-weight: 500;
     text-align: left;
 
@@ -66,4 +66,33 @@
     to {
         transform: rotate(360deg);
     }
+}
+
+.SimpleTextClass {
+
+    font-weight: 800;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20px;
+
+
+
+}
+
+.ColumnTextClass {
+
+
+    font-size: 17px;
+    font-weight: 500;
+
+}
+
+.Rectangle {
+
+    display: inline-block;
+    width: 50%;
+    height: 50px;
+    max-width: 900px;
+    background-color: #7c1111;
+
+
 }
