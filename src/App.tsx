@@ -23,8 +23,8 @@ function App(): JSX.Element {
             </p>
             <Container>
                 <Row className="ColumnTextClass">
-                    <Col>First Column</Col>
-                    <Col>Second Column</Col>
+                    <Col className="Rectangle">First Column</Col>
+                    <Col className="Rectangle">Second Column</Col>
                 </Row>
             </Container>
             <img
