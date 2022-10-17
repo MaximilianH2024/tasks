@@ -32,7 +32,6 @@ export function tripleNumbers(numbers: number[]): number[] {
  * the number cannot be parsed as an integer, convert it to 0 instead.
  */
 export function stringsToIntegers(numbers: string[]): number[] {
-
     return [];
 }
 
@@ -61,7 +60,17 @@ export const shoutIfExclaiming = (messages: string[]): string[] => {
  * 4 letters long.
  */
 export function countShortWords(words: string[]): number {
-    return 0;
+    // for (const word of words) {
+    //     if (word.length < 4) {
+    //         fourLetter += 1;
+    //     }
+    // }
+
+    const isLessThanFour = (word: string): boolean => word.length < 4;
+    const numberOfWords = words.filter(isLessThanFour);
+
+
+    return numberOfWords.length;
 }
 
 /**
