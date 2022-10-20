@@ -32,10 +32,15 @@ export function tripleNumbers(numbers: number[]): number[] {
  * the number cannot be parsed as an integer, convert it to 0 instead.
  */
 export function stringsToIntegers(numbers: string[]): number[] {
+    // const numArr = numbers.map(Number);
 
-    const numArr = numbers.map(Number);
+    const numArr = numbers.map((price: string): number =>
+        isNaN(Number(price)) ? 0 : parseInt(price)
+    );
 
     return numArr;
+
+    // return numArr;
 }
 
 /**
@@ -46,7 +51,30 @@ export function stringsToIntegers(numbers: string[]): number[] {
  */
 // Remember, you can write functions as lambdas too! They work exactly the same.
 export const removeDollars = (amounts: string[]): number[] => {
-    return [];
+    const correctedVals = amounts.map((amount: string): number => {
+        let spliced;
+
+        if (amount.startsWith("$")) {
+            if (amount.length === 0) {
+                return 0;
+            }
+            if (amount.length > 1) {
+                spliced = amount.substring(1);
+            } else {
+                return 0;
+            }
+            // spliced = amount.substring(1);
+        } else {
+            spliced = amount;
+        }
+        if (isNaN(parseFloat(spliced))) {
+            return 0;
+        } else {
+            return parseFloat(spliced);
+        }
+    });
+
+    return correctedVals;
 };
 
 /**
@@ -55,21 +83,21 @@ export const removeDollars = (amounts: string[]): number[] => {
  * in question marks ("?").
  */
 export const shoutIfExclaiming = (messages: string[]): string[] => {
-    let x = 0;
+    let messagesRe = messages.map((message: string): string => {
+        let upper = message;
 
-    for (let message of messages) {
-        if (message.includes("!")) {
-            message = message.toUpperCase();
+        if (message.endsWith("!")) {
+            upper = message.toUpperCase();
         }
-        if (message.includes("?")) {
-            messages.push(message);
-            x += 1;
-        }
-    }
 
-    messages.length = messages.length - x;
+        return upper;
+    });
 
-    return messages;
+    messagesRe = messagesRe.filter(
+        (message: string): boolean => !message.endsWith("?")
+    );
+
+    return messagesRe;
 };
 
 /**
