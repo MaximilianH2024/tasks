@@ -32,7 +32,10 @@ export function tripleNumbers(numbers: number[]): number[] {
  * the number cannot be parsed as an integer, convert it to 0 instead.
  */
 export function stringsToIntegers(numbers: string[]): number[] {
-    return [];
+
+    const numArr = numbers.map(Number);
+
+    return numArr;
 }
 
 /**
@@ -52,7 +55,21 @@ export const removeDollars = (amounts: string[]): number[] => {
  * in question marks ("?").
  */
 export const shoutIfExclaiming = (messages: string[]): string[] => {
-    return [];
+    let x = 0;
+
+    for (let message of messages) {
+        if (message.includes("!")) {
+            message = message.toUpperCase();
+        }
+        if (message.includes("?")) {
+            messages.push(message);
+            x += 1;
+        }
+    }
+
+    messages.length = messages.length - x;
+
+    return messages;
 };
 
 /**
@@ -69,7 +86,6 @@ export function countShortWords(words: string[]): number {
     const isLessThanFour = (word: string): boolean => word.length < 4;
     const numberOfWords = words.filter(isLessThanFour);
 
-
     return numberOfWords.length;
 }
 
@@ -79,7 +95,16 @@ export function countShortWords(words: string[]): number {
  * then return true.
  */
 export function allRGB(colors: string[]): boolean {
-    return false;
+    if (colors.length === 0) {
+        return true;
+    }
+
+    const allRGB = colors.every(
+        (color: string): boolean =>
+            color === "red" || color === "green" || color === "blue"
+    );
+
+    return allRGB;
 }
 
 /**
