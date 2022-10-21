@@ -143,6 +143,21 @@ export function allRGB(colors: string[]): boolean {
  * And the array [] would become "0=0".
  */
 export function makeMath(addends: number[]): string {
+    if (addends.length != 0) {
+        const arrSum = addends.reduce(
+            (currSum: number, num: number) => currSum + num,
+            0
+        );
+        // addends.sort();
+
+        const addendsToString = addends.join("+");
+
+        return arrSum.toString().concat("=", addendsToString);
+    }
+    if (addends.length === 0) {
+        return "0=0";
+    }
+
     return "";
 }
 
@@ -156,5 +171,35 @@ export function makeMath(addends: number[]): string {
  * And the array [1, 9, 7] would become [1, 9, 7, 17]
  */
 export function injectPositive(values: number[]): number[] {
-    return [];
+    const firstInstanceOfNeg = values.findIndex(
+        (value: number): boolean => value < 0
+    );
+    if (firstInstanceOfNeg != -1) {
+        const firstPortion = values.slice(0, firstInstanceOfNeg);
+
+        const pushedSum = firstPortion.reduce(
+            (currSum: number, num: number) => currSum + num,
+            0
+        );
+
+        firstPortion.push(pushedSum);
+
+        const valueCopy = [...values];
+
+        valueCopy.splice(firstInstanceOfNeg + 1, 0, pushedSum);
+
+        return valueCopy;
+    }
+    if (firstInstanceOfNeg === -1) {
+        const summed = values.reduce(
+            (currSum: number, num: number) => currSum + num,
+            0
+        );
+
+        const valueCopy = [...values];
+
+        valueCopy.push(summed);
+
+        return valueCopy;
+    }
 }
