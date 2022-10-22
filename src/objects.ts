@@ -1,3 +1,4 @@
+import { sortAndDeduplicateDiagnostics } from "typescript";
 import { isQuestion } from "./functions";
 import { Question, QuestionType } from "./interfaces/question";
 
@@ -61,7 +62,14 @@ export function isValid(question: Question, answer: string): boolean {
  * name "My First Question" would become "9: My First Q".
  */
 export function toShortForm(question: Question): string {
-    return "";
+
+    let idS = question.id.toString();
+
+    idS += ": ";
+
+    let choppedName = question.name.slice(0, 10);
+
+    return idS + choppedName;
 }
 
 /**
