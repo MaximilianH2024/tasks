@@ -6,7 +6,12 @@ import { Question, QuestionType } from "./interfaces/question";
  * that are `published`.
  */
 export function getPublishedQuestions(questions: Question[]): Question[] {
-    return [];
+
+    let publishedQuestions = questions.filter(
+        (question: questions): boolean => question.published === true
+    );
+
+    return publishedQuestions;
 }
 
 /**
