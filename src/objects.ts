@@ -91,8 +91,8 @@ export function toShortForm(question: Question): string {
  */
 export function toMarkdown(question: Question): string {
 
-    let firstLine = "# " + question.name;
-    
+    const firstLine = "# " + question.name;
+
     if (question.type != "multiple_choice_question") {
         return firstLine + "\n" + question.body;
     } else if (question.type === "multiple_choice_question") {
@@ -134,7 +134,15 @@ export function renameQuestion(question: Question, newName: string): Question {
  * published; if it was published, now it should be not published.
  */
 export function publishQuestion(question: Question): Question {
-    return question;
+    let testBool = true;
+
+    const invertPub = {
+        ...question,
+        published: question.published ? false : true,
+        // publishedP: question.published ? false : true
+    };
+
+    return invertPub;
 }
 
 /**
@@ -191,5 +199,14 @@ export function mergeQuestion(
     contentQuestion: Question,
     { points }: { points: number }
 ): Question {
-    return contentQuestion;
+    return {
+        body: contentQuestion.body,
+        type: contentQuestion.type,
+        options: contentQuestion.options,
+        expected: contentQuestion.expected,
+        points: points,
+        published: false,
+        id: id,
+        name: name
+    }
 }
