@@ -179,7 +179,7 @@ export function sameType(questions: Question[]): boolean {
         const compType = questions[0].type;
 
         const comp = questions.every(
-            (question: Question): boolean => question.type === tempType
+            (question: Question): boolean => question.type === compType
         );
         return comp;
     }
@@ -221,7 +221,14 @@ export function renameQuestionById(
     targetId: number,
     newName: string
 ): Question[] {
-    return [];
+    const modifiedQuestion = questions.map(
+        (question: Question): Question => ({
+            ...question,
+            name: question.id === targetId ? newName : question.name
+        })
+    );
+
+    return modifiedQuestion;
 }
 
 /***
@@ -236,7 +243,19 @@ export function changeQuestionTypeById(
     targetId: number,
     newQuestionType: QuestionType
 ): Question[] {
-    return [];
+    const modifiedQuestion = questions.map(
+        (question: Question): Question => ({
+            ...question,
+            type: question.id === targetId ? newQuestionType : question.type,
+            options:
+                newQuestionType != "multiple_choice_question" &&
+                question.id == targetId
+                    ? []
+                    : question.options
+        })
+    );
+
+    return modifiedQuestion;
 }
 
 /**
