@@ -93,9 +93,10 @@ export function sumPublishedPoints(questions: Question[]): number {
     );
 
     const publishedPoint = publishedQuestions.reduce(
-        (currentSum: number, question: Question) => currentSum + question.points,
+        (currentSum: number, question: Question) =>
+            currentSum + question.points,
         0
-    )
+    );
     return publishedPoint;
 }
 
@@ -117,7 +118,22 @@ id,name,options,points,published
  * Check the unit tests for more examples!
  */
 export function toCSV(questions: Question[]): string {
-    return "";
+    const questionsCV = questions
+        .map(
+            (question: Question): string =>
+                question.id.toString() +
+                "," +
+                question.name +
+                "," +
+                question.options.length.toString() +
+                "," +
+                question.points.toString() +
+                "," +
+                question.published.toString()
+        )
+        .join("\n");
+
+    return "id,name,options,points,published" + "\n" + questionsCV;
 }
 
 /**
@@ -126,7 +142,15 @@ export function toCSV(questions: Question[]): string {
  * making the `text` an empty string, and using false for both `submitted` and `correct`.
  */
 export function makeAnswers(questions: Question[]): Answer[] {
-    return [];
+    const answers: Answer[] = questions.map(
+        (question: Question): Answer => ({
+            questionId: question.id,
+            text: "",
+            submitted: false,
+            correct: false
+        })
+    );
+    return answers;
 }
 
 /***
@@ -134,8 +158,14 @@ export function makeAnswers(questions: Question[]): Answer[] {
  * each question is now published, regardless of its previous published status.
  */
 export function publishAll(questions: Question[]): Question[] {
-    return [];
-}
+    const publishedNoMatterWhat = questions.map(
+        (question: Question): Question => ({
+            ...question,
+            published: true
+        })
+    );
+    return publishedNoMatterWhat;
+};
 
 /***
  * Consumes an array of Questions and produces whether or not all the questions
