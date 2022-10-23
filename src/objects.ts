@@ -99,9 +99,13 @@ export function toMarkdown(question: Question): string {
  */
 export function renameQuestion(question: Question, newName: string): Question {
 
-    question.name = newName;
+    const questionWithNewName = {
+        ...question,
+        name: newName
+    };
+    // question.name = newName;
 
-    return question;
+    return questionWithNewName;
 }
 
 /**
@@ -120,6 +124,20 @@ export function publishQuestion(question: Question): Question {
  * The `published` field should be reset to false.
  */
 export function duplicateQuestion(id: number, oldQuestion: Question): Question {
+
+    // let copyS = "Copy of ";
+
+    // const newQuestion = {
+    //     id,
+    //     name: copyS + oldQuestion.name,
+    //     type: oldQuestion.type,
+    //     body: oldQuestion.body,
+    //     options: oldQuestion.options,
+    //     points: oldQuestion.points,
+    //     expected: oldQuestion.expected,
+    //     published: false
+    // };
+    // // return oldQuestion.name;
     return oldQuestion;
 }
 
@@ -131,7 +149,12 @@ export function duplicateQuestion(id: number, oldQuestion: Question): Question {
  * Check out the subsection about "Nested Fields" for more information.
  */
 export function addOption(question: Question, newOption: string): Question {
-    return question;
+    const questionWithNewOption = {
+        ...question,
+        options: [...question.options, newOption]
+    };
+
+    return questionWithNewOption;
 }
 
 /**
