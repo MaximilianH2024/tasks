@@ -20,18 +20,32 @@ export function getPublishedQuestions(questions: Question[]): Question[] {
  * `expected`, and an empty array for its `options`.
  */
 export function getNonEmptyQuestions(questions: Question[]): Question[] {
-    return [];
+
+    const nonEmptyQuestions = questions.filter(
+        (question: Question): boolean =>
+            question.body != "" || question.expected != ""
+    );
+
+    return nonEmptyQuestions;
 }
 
 /***
  * Consumes an array of questions and returns the question with the given `id`. If the
  * question is not found, return `null` instead.
  */
-export function findQuestion(
-    questions: Question[],
-    id: number
-): Question | null {
-    return null;
+export function findQuestion(questions: Question[], id: number): Question | null {
+
+    const correctId = questions.find(
+        (question: questions): boolean => question.id === id
+    );
+
+    if (correctId) {
+        return correctId;
+    } else {
+        return null;
+    }
+
+    // return correctId;
 }
 
 /**
@@ -39,7 +53,11 @@ export function findQuestion(
  * with the given `id`.
  */
 export function removeQuestion(questions: Question[], id: number): Question[] {
-    return [];
+    const removedId = questions.filter(
+        (question: Question): boolean => question.id != id
+    );
+
+    return removedId;
 }
 
 /***
@@ -47,14 +65,23 @@ export function removeQuestion(questions: Question[], id: number): Question[] {
  * questions, as an array.
  */
 export function getNames(questions: Question[]): string[] {
-    return [];
+    const stringArr = questions.map((question: Question): string => {
+        return question.name;
+    });
+
+    return stringArr;
 }
 
 /***
  * Consumes an array of questions and returns the sum total of all their points added together.
  */
 export function sumPoints(questions: Question[]): number {
-    return 0;
+    const pointSum = questions.reduce(
+        (currentSum: number, question: Question) =>
+            currentSum + question.points,
+        0
+    );
+    return pointSum;
 }
 
 /***
