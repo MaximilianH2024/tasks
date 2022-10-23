@@ -67,7 +67,7 @@ export function toShortForm(question: Question): string {
 
     idS += ": ";
 
-    let choppedName = question.name.slice(0, 10);
+    const choppedName = question.name.slice(0, 10);
 
     return idS + choppedName;
 }
@@ -125,20 +125,20 @@ export function publishQuestion(question: Question): Question {
  */
 export function duplicateQuestion(id: number, oldQuestion: Question): Question {
 
-    // let copyS = "Copy of ";
+    let copyS = "Copy of ";
 
-    // const newQuestion = {
-    //     id,
-    //     name: copyS + oldQuestion.name,
-    //     type: oldQuestion.type,
-    //     body: oldQuestion.body,
-    //     options: oldQuestion.options,
-    //     points: oldQuestion.points,
-    //     expected: oldQuestion.expected,
-    //     published: false
-    // };
-    // // return oldQuestion.name;
-    return oldQuestion;
+    const newQuestion = {
+        id,
+        name: copyS + oldQuestion.name,
+        type: oldQuestion.type,
+        body: oldQuestion.body,
+        options: oldQuestion.options,
+        points: oldQuestion.points,
+        expected: oldQuestion.expected,
+        published: false
+    };
+    // return oldQuestion.name;
+    return newQuestion;
 }
 
 /**
