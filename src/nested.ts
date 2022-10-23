@@ -1,3 +1,4 @@
+import { type } from "os";
 import { Answer } from "./interfaces/answer";
 import { Question, QuestionType } from "./interfaces/question";
 
@@ -165,14 +166,23 @@ export function publishAll(questions: Question[]): Question[] {
         })
     );
     return publishedNoMatterWhat;
-};
+}
 
 /***
  * Consumes an array of Questions and produces whether or not all the questions
  * are the same type. They can be any type, as long as they are all the SAME type.
  */
 export function sameType(questions: Question[]): boolean {
-    return false;
+    if (questions.length === 0) {
+        return true;
+    } else {
+        const compType = questions[0].type;
+
+        const comp = questions.every(
+            (question: Question): boolean => question.type === tempType
+        );
+        return comp;
+    }
 }
 
 /***
@@ -186,7 +196,19 @@ export function addNewQuestion(
     name: string,
     type: QuestionType
 ): Question[] {
-    return [];
+    return [
+        ...questions,
+        {
+            id: id,
+            name: name,
+            type: type,
+            body: "",
+            expected: "",
+            options: [],
+            points: 1,
+            published: false
+        }
+    ];
 }
 
 /***
