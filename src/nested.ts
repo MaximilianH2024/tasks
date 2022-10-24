@@ -268,13 +268,30 @@ export function changeQuestionTypeById(
  * Remember, if a function starts getting too complicated, think about how a helper function
  * can make it simpler! Break down complicated tasks into little pieces.
  */
-export function editOption(
-    questions: Question[],
-    targetId: number,
-    targetOptionIndex: number,
-    newOption: string
-): Question[] {
-    return [];
+export function editOption(questions: Question[],targetId: number,targetOptionIndex: number,newOption: string): Question[] {
+    const modifiedQuestion = questions.map(
+        (question: Question): Question => ({
+            ...question,
+            // type: question.id === targetId ? newQuestionType : question.type,
+            options:
+            // Below checks if the current questions id matches that of targetID
+                question.id === targetId
+                    // If it does, check if the targetOptionIndex is equal to -1 in order to simply push newOption to the end of list
+                    // Otherwise we use map to "iterate" through options array until we reach the index that newOption is intented to be inserted at
+                    ? targetOptionIndex === -1
+                        ? [...question.options, newOption]
+                        : question.options.map((option: string, num: number): string => {
+                            if (num === targetOptionIndex) {
+                                return newOption;
+                            }
+                            return option;
+                        })
+                    : [...question.options]
+            // : question.options.splice(targetOptionIndex, 0, newOption)
+        })
+    );
+
+    return modifiedQuestion;
 }
 
 /***
@@ -283,8 +300,7 @@ export function editOption(
  * the duplicate inserted directly after the original question. Use the `duplicateQuestion`
  * function you defined previously; the `newId` is the parameter to use for the duplicate's ID.
  */
-export function duplicateQuestionInArray(
-    questions: Question[],
+export function duplicateQuestionInArray(questions: Question[],
     targetId: number,
     newId: number
 ): Question[] {
