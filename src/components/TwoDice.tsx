@@ -12,5 +12,46 @@ export function d6(): number {
 }
 
 export function TwoDice(): JSX.Element {
-    return <div>Two Dice</div>;
+    const [leftDieVal, rollLeftDie] = useState<number>(3);
+    const [rightDieVal, rollRightDie] = useState<number>(1);
+
+    return (
+        <div>
+            <Button
+                onClick={() => {
+                    rollLeftDie(d6());
+                }}
+            >
+                Roll Left
+            </Button>
+            <Button
+                onClick={() => {
+                    rollRightDie(d6());
+                }}
+            >
+                Roll Right
+            </Button>
+            {/*
+            If the values of both die turn out to be one after a roll, 
+            a message of "lose" will be displayed, 
+            otherwise if they are the same value the player has won
+            */}
+            {leftDieVal === 1 && rightDieVal === 1 ? (
+                <div>lose</div>
+            ) : leftDieVal === rightDieVal ? (
+                <div>win</div>
+            ) : (
+                <div>Try Again</div>
+            )}
+
+            <div>
+                <span data-testid="left-die">{leftDieVal}</span>
+                <span>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                </span>
+                <span data-testid="right-die">{rightDieVal}</span>
+            </div>
+        </div>
+    );
 }
