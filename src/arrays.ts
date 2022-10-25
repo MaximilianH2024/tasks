@@ -202,4 +202,5 @@ export function injectPositive(values: number[]): number[] {
 
         return valueCopy;
     }
+    return values;
 }

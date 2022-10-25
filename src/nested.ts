@@ -8,9 +8,8 @@ import { duplicateQuestion } from "./objects";
  * that are `published`.
  */
 export function getPublishedQuestions(questions: Question[]): Question[] {
-
-    let publishedQuestions = questions.filter(
-        (question: questions): boolean => question.published === true
+    const publishedQuestions = questions.filter(
+        (question: Question): boolean => question.published === true
     );
 
     return publishedQuestions;
@@ -38,7 +37,7 @@ export function getNonEmptyQuestions(questions: Question[]): Question[] {
 export function findQuestion(questions: Question[], id: number): Question | null {
 
     const correctId = questions.find(
-        (question: questions): boolean => question.id === id
+        (question: Question): boolean => question.id === id
     );
 
     if (correctId) {
