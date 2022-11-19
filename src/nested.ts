@@ -10,7 +10,7 @@ import { duplicateQuestion } from "./objects";
 export function getPublishedQuestions(questions: Question[]): Question[] {
 
     let publishedQuestions = questions.filter(
-        (question: questions): boolean => question.published === true
+        (question: Question): boolean => question.published === true
     );
 
     return publishedQuestions;
@@ -35,10 +35,12 @@ export function getNonEmptyQuestions(questions: Question[]): Question[] {
  * Consumes an array of questions and returns the question with the given `id`. If the
  * question is not found, return `null` instead.
  */
-export function findQuestion(questions: Question[], id: number): Question | null {
-
+export function findQuestion(
+    questions: Question[],
+    id: number
+): Question | null {
     const correctId = questions.find(
-        (question: questions): boolean => question.id === id
+        (question: Question): boolean => question.id === id
     );
 
     if (correctId) {
@@ -269,7 +271,12 @@ export function changeQuestionTypeById(
  * Remember, if a function starts getting too complicated, think about how a helper function
  * can make it simpler! Break down complicated tasks into little pieces.
  */
-export function editOption(questions: Question[],targetId: number,targetOptionIndex: number,newOption: string): Question[] {
+export function editOption(
+    questions: Question[],
+    targetId: number,
+    targetOptionIndex: number,
+    newOption: string
+): Question[] {
     const modifiedQuestion = questions.map(
         (question: Question): Question => ({
             ...question,
@@ -286,7 +293,8 @@ export function editOption(questions: Question[],targetId: number,targetOptionIn
                                 return newOption;
                             }
                             return option;
-                        })
+                        }
+                        )
                     : [...question.options]
             // : question.options.splice(targetOptionIndex, 0, newOption)
         })
@@ -301,8 +309,11 @@ export function editOption(questions: Question[],targetId: number,targetOptionIn
  * the duplicate inserted directly after the original question. Use the `duplicateQuestion`
  * function you defined previously; the `newId` is the parameter to use for the duplicate's ID.
  */
-export function duplicateQuestionInArray(questions: Question[],targetId: number,newId: number): Question[] {
-    
+export function duplicateQuestionInArray(
+    questions: Question[],
+    targetId: number,
+    newId: number
+): Question[] {
     const pushedO: Question[] = questions.map((question: Question) => ({
         ...question,
         options: [...question.options]

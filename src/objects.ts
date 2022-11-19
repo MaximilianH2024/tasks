@@ -53,6 +53,7 @@ export function isValid(question: Question, answer: string): boolean {
             return false;
         }
     }
+    return false;
 }
 
 /**
@@ -111,6 +112,7 @@ export function toMarkdown(question: Question): string {
             question.options[2]
         );
     }
+    return "";
 }
 
 /**
@@ -134,7 +136,7 @@ export function renameQuestion(question: Question, newName: string): Question {
  * published; if it was published, now it should be not published.
  */
 export function publishQuestion(question: Question): Question {
-    let testBool = true;
+    const testBool = true;
 
     const invertPub = {
         ...question,
@@ -153,7 +155,7 @@ export function publishQuestion(question: Question): Question {
  */
 export function duplicateQuestion(id: number, oldQuestion: Question): Question {
 
-    let copyS = "Copy of ";
+    const copyS = "Copy of ";
 
     const newQuestion = {
         id,
@@ -208,5 +210,5 @@ export function mergeQuestion(
         published: false,
         id: id,
         name: name
-    }
+    };
 }
