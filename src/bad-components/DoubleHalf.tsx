@@ -21,7 +21,7 @@ function Mult({ setDhValue, dhValue }: doubleOrHalfValues): JSX.Element {
 }
 
 export function DoubleHalf(): JSX.Element {
-    const [dhValue, setDhValue] = useState<number>(20);
+    const [dhValue, setDhValue] = useState<number>(10);
 
     return (
         <div>
