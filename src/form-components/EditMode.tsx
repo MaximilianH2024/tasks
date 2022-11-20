@@ -12,40 +12,41 @@ export function EditMode(): JSX.Element {
         <div>
             <h3>Edit Mode</h3>
             <Form.Group controlId="formResponse">
-                <Form.Label>Your Name: </Form.Label>
                 <Form.Control
                     type="text"
                     value={name}
                     onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
                         setName(event.target.value)
                     }
-                    disabled={!editMode}
+                    hidden={!editMode}
+                />
+                {/* 
+                A switch that controls when one is in edit mode (initially false)
+                */}
+                <Form.Check
+                    type="switch"
+                    id="is-in-editmode-switch"
+                    label="Edit Mode"
+                    checked={editMode}
+                    onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+                        setEditMode(event.target.checked)
+                    }
+                />
+                {/* 
+                Whether or not the user is a student should be controlled by a regular checkbox, not a switch or button 
+                */}
+                <Form.Check
+                    hidden={!editMode}
+                    type="checkbox"
+                    id="student-checkbox"
+                    name="student"
+                    label="Student"
+                    checked={isAStudent}
+                    onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+                        setStudent(event.target.checked)
+                    }
                 />
             </Form.Group>
-            {/* 
-                A switch that controls when one is in edit mode (initially false)
-            */}
-            <Form.Check
-                type="switch"
-                id="is-in-editmode-switch"
-                label="Edit Mode"
-                checked={editMode}
-                onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
-                    setEditMode(event.target.checked)
-                }
-            />
-            {/* 
-                Whether or not the user is a student should be controlled by a regular checkbox, not a switch or button 
-            */}
-            <Form.Check
-                type="checkbox"
-                id="is-student-check"
-                label="Student"
-                checked={isAStudent}
-                onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
-                    setStudent(event.target.checked)
-                }
-            />
             {/* 
                 By default, will display "Your name is a student" or "Your name is not a student"
             */}
