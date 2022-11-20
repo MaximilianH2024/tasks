@@ -9,12 +9,12 @@ export function CheckAnswer({
     const [answer, setAnswer] = useState<string>("");
 
     return (
-        <div>
+        <>
             <h3>Check Answer</h3>
             <Form.Group controlId="formAnswer">
                 <Form.Label>Answer: </Form.Label>
                 <Form.Control
-                    type="number"
+                    type="text"
                     value={answer}
                     onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
                         setAnswer(event.target.value)
@@ -24,6 +24,6 @@ export function CheckAnswer({
             <div>
                 <p>{answer === expectedAnswer ? "✔️" : "❌"}</p>
             </div>
-        </div>
+        </>
     );
 }
