@@ -13,20 +13,6 @@ function ShoveBoxButton({
     );
 }
 
-function PullBoxButton({
-    position,
-    setPosition
-}: {
-    position: number;
-    setPosition: (newPosition: number) => void;
-}) {
-    return (
-        <Button onClick={() => setPosition(-40 + position)}>
-            Pull the Box
-        </Button>
-    );
-}
-
 function MoveableBox(position: number): JSX.Element {
     // const [position, setPosition] = useState<number>(10);
     return (
@@ -58,10 +44,6 @@ export function ShoveBox(): JSX.Element {
                     position={position}
                     setPosition={setPosition}
                 ></ShoveBoxButton>
-                <PullBoxButton
-                    position={position}
-                    setPosition={setPosition}
-                ></PullBoxButton>
                 {box}
             </div>
         </div>
