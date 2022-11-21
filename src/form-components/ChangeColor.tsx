@@ -18,7 +18,7 @@ export function ChangeColor(): JSX.Element {
 
     return (
         <div>
-            <h3>Change Color</h3>
+            <h3 style={{ fontWeight: "bold" }}>Change Color</h3>
             {colors.map((colorCode: string) => (
                 <Form.Check
                     key={colorCode}

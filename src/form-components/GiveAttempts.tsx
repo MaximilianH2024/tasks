@@ -7,7 +7,7 @@ export function GiveAttempts(): JSX.Element {
 
     return (
         <div>
-            <h3>Give Attempts</h3>
+            <h3 style={{ fontWeight: "bold" }}>Give Attempts</h3>
             <Form.Control
                 type="number"
                 value={requestedAttempts}

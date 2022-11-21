@@ -10,7 +10,7 @@ export function EditMode(): JSX.Element {
     const [isAStudent, setStudent] = useState<boolean>(true);
     return (
         <div>
-            <h3>Edit Mode</h3>
+            <h3 style={{ fontWeight: "bold" }}>Edit Mode</h3>
             <Form.Group controlId="formResponse">
                 <Form.Control
                     type="text"
